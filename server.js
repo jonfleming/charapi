@@ -6,7 +6,7 @@ var request = require('request');
 var AWS = require('aws-sdk');
 var zlib = require('zlib');
 var lockFile = require('lockfile');
-require('dotenv').cofig();
+require('dotenv').config();
 
 // TODO set up your Character API key here
 var charAPIKey = process.env.charAPIKey;
