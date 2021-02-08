@@ -1,0 +1,17 @@
+[Unit]                                                         
+Description=Chararcter API                                       
+After=network.target                                           
+                                                               
+[Service]                                                      
+Restart=no                                                 
+User=jon                                                    
+Group=nogroup                                                  
+                                                               
+Environment=PATH=/usr/bin:/usr/local/bin                       
+Environment=NODE_ENV=production                                
+Environment=NODE_PORT=3000                                 
+WorkingDirectory=/home/jon/projects/charapi                       
+ExecStart=/usr/local/bin/node /home/jon/projects/charapi/server.js
+                                                               
+[Install]                                                      
+WantedBy=multi-user.target                                     

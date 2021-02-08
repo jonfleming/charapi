@@ -8,7 +8,6 @@ var zlib = require('zlib');
 var lockFile = require('lockfile');
 require('dotenv').config();
 
-// TODO set up your Character API key here
 var charAPIKey = process.env.charAPIKey;
 
 var polly = new AWS.Polly({
@@ -19,6 +18,11 @@ var polly = new AWS.Polly({
   timeout: 15000
 });
 
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+}
+
 // TODO set the path to your cache directory, and make sure to give it read/write permission, e.g. mkdir cache && sudo chgrp apache cache && sudo chmod g+w cache
 var cachePrefix = "./cache/";
 
@@ -26,7 +30,7 @@ var cachePrefix = "./cache/";
 var app = express();
 app.use(bodyParser.json({limit: '1mb'}));
 app.use(bodyParser.urlencoded({ limit: '1mb', extended: true }));
-app.use(cors());
+app.use(cors(corsOptions));
 // The Character API endpoint
 var urlAnimate = "http://mediasemantics.com/animate";
 
